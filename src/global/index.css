@@ -1,0 +1,88 @@
+/*
+=============== 
+Global Styles And Variables
+===============
+*/
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap');
+
+:root {
+  --max-width: calc(1440px - 4rem);
+  --mobile-max-width: calc(100vw - 2rem);
+  --white: #fff;
+  --primary-500: #347855;
+  --gray-900: #2e2d2b;
+  --radius: 0.5rem;
+
+  --bg-percent: #ffcf00;
+  --bg-black: #222;
+  --bg-border: #e3e3e3;
+  --bg-border-light: #f5f5f5f5;
+  --table-line-dark: rgba(0, 0, 0, 0.7);
+  --table-line-light: rgba(0, 0, 0, 0.07);
+
+  /* blue */
+  --bg-p-50: #f7fbff;
+  --bg-p-100: #d9ecff;
+  --bg-p-200: #9cceff;
+  --bg-p-300: #5eafff;
+  --bg-p-400: #2191ff;
+  --bg-p-500: #0072e3;
+  --bg-p-600: #0063c4;
+  --bg-p-700: #0053a6;
+  --bg-p-800: #004487;
+  --bg-p-900: #003569;
+  --bg-p-950: #002d59;
+  --bg-error: #ffb6b3;
+  --clr-error: #ff3429;
+
+  /* gray */
+  --text-50: #f3f3f5;
+  --text-100: #e3e5e8;
+  --text-200: #c5c8ce;
+  --text-300: #a6abb5;
+  --text-400: #888e9b;
+  --text-500: #6b7280;
+  --text-600: #585e6a;
+  --text-700: #464a54;
+  --text-800: #33373d;
+  --text-900: #212327;
+  --text-950: #17191c;
+
+  --transition: all 0.3s linear;
+  --spacing: 0.1rem;
+}
+
+::selection {
+  background: inherit;
+  color: inherit;
+}
+*,
+::after,
+::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-transform: capitalize;
+  list-style-type: none;
+  text-decoration: none;
+  cursor: default;
+}
+body {
+  font-family: 'Poppins', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: var(--bg-main);
+  color: var(--text-800);
+  line-height: 1.5;
+  font-size: 0.875rem;
+}
+
+.fixed-width {
+  margin: 0 auto;
+  max-width: var(--max-width);
+}
+@media screen and (width <= 1440px) {
+  .fixed-width {
+    max-width: var(--mobile-max-width);
+  }
+}
