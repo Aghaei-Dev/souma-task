@@ -3,11 +3,13 @@ import { logo } from '../../assets/images'
 import { Button } from '../'
 import { links } from '../../assets/constants'
 import { Bars } from '../../assets/icons'
+import SubMenu from './SubMenu'
 export default function Header() {
   return (
     <Wrapper>
       <div className='fixed-width'>
         <Button variant='contained'>ورود</Button>
+        <SubMenu />
         <Bars />
         <nav>
           <ul>
@@ -28,7 +30,7 @@ export default function Header() {
 }
 
 const Wrapper = styled.header`
-  opacity: 0.5;
+  /* opacity: 0.5; */
   z-index: 100;
   border-bottom: 1px solid #f4f4f4;
   background: var(--white);
@@ -39,7 +41,14 @@ const Wrapper = styled.header`
     display: flex;
     justify-content: space-between;
     align-items: center;
-
+    button {
+      position: relative;
+      &:hover {
+        .sub-menu {
+          background: red;
+        }
+      }
+    }
     ul {
       display: flex;
       flex-direction: row-reverse;
