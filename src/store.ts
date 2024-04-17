@@ -1,11 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit'
-// import { jobSlice, userSlice, allJobsSlice } from './features'
+import { postSlice } from './features'
 
 export const store = configureStore({
   reducer: {
-    // posts: postsReducer,
-    // comments: commentsReducer,
-    // users: usersReducer,
+    // posts: postSlice,
   },
 })
 

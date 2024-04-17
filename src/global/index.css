@@ -9,9 +9,29 @@ Global Styles And Variables
   --max-width: calc(1440px - 4rem);
   --mobile-max-width: calc(100vw - 2rem);
   --white: #fff;
+  --primary-50: #dde8e3;
   --primary-500: #347855;
+  --primary-600: #126139;
+
   --gray-900: #2e2d2b;
   --radius: 0.5rem;
+  --half-radius: 0.25rem;
+
+  /* gray */
+  --gray-100: #e5e5e5;
+  --gray-500: #858589;
+  --gray-700: #585756;
+  --gray-800: #434240;
+
+  --gray-50: #f3f3f5;
+
+  --gray-200: #c5c8ce;
+  --gray-300: #a6abb5;
+  --gray-400: #888e9b;
+
+  --gray-600: #585e6a;
+  --gray-900: #212327;
+  --gray-950: #17191c;
 
   --bg-percent: #ffcf00;
   --bg-black: #222;
@@ -34,19 +54,6 @@ Global Styles And Variables
   --bg-p-950: #002d59;
   --bg-error: #ffb6b3;
   --clr-error: #ff3429;
-
-  /* gray */
-  --text-50: #f3f3f5;
-  --text-100: #e3e5e8;
-  --text-200: #c5c8ce;
-  --text-300: #a6abb5;
-  --text-400: #888e9b;
-  --text-500: #6b7280;
-  --text-600: #585e6a;
-  --text-700: #464a54;
-  --text-800: #33373d;
-  --text-900: #212327;
-  --text-950: #17191c;
 
   --transition: all 0.3s linear;
   --spacing: 0.1rem;
