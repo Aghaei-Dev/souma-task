@@ -37,7 +37,7 @@ const Wrapper = styled.button<Props>`
     props.variant === 'contained' ? 'none' : '1px solid var(--primary-500)'};
   outline: none;
   cursor: pointer;
-  padding: 1rem;
+  padding: 0.8rem;
   font-weight: bold;
   color: ${(props) =>
     props.disable

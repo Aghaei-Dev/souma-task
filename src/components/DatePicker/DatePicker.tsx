@@ -1,4 +1,3 @@
-import React from 'react'
 import styled from 'styled-components'
 import { Button } from '../Assistance'
 export default function DatePicker() {
@@ -8,19 +7,22 @@ export default function DatePicker() {
         امروز
       </Button>
       <Button disable radius='var(--half-radius)' variant='contained'>
-        فروردین
+        ۱۹فروردین
       </Button>
       <Button disable radius='var(--half-radius)' variant='contained'>
-        فروردین
+        ۱۸فروردین
       </Button>
       <Button disable radius='var(--half-radius)' variant='contained'>
-        فروردین
+        ۱۷فروردین
       </Button>
       <Button disable radius='var(--half-radius)' variant='contained'>
-        فروردین
+        ۱۶فروردین
       </Button>
       <Button disable radius='var(--half-radius)' variant='contained'>
-        فروردین
+        ۱۵فروردین
+      </Button>
+      <Button disable radius='var(--half-radius)' variant='contained'>
+        ۱۴فروردین
       </Button>
     </Wrapper>
   )
@@ -36,4 +38,7 @@ const Wrapper = styled.section`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  @media (width<=850px) {
+    display: none;
+  }
 `

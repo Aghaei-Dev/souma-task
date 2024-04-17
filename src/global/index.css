@@ -21,19 +21,18 @@ Global Styles And Variables
   --half-radius: 0.25rem;
 
   /* gray */
+  --gray-50: #f4f4f4;
   --gray-100: #e5e5e5;
   --gray-500: #858589;
   --gray-700: #585756;
   --gray-800: #434240;
-
-  --gray-50: #f3f3f5;
+  --gray-900: #2e2d2b;
 
   --gray-200: #c5c8ce;
   --gray-300: #a6abb5;
   --gray-400: #888e9b;
 
   --gray-600: #585e6a;
-  --gray-900: #212327;
   --gray-950: #17191c;
 
   --bg-percent: #ffcf00;

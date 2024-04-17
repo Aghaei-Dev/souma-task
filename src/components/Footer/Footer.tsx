@@ -19,7 +19,7 @@ export default function Footer() {
 
         <div className='content'>
           <article>
-            <h4>دسترسی سریع</h4>
+            <h5>دسترسی سریع</h5>
 
             <a href=''>راهنمای سرمایه گذار حرفه ای</a>
             <a href=''>راهنمای سرمایه گذاری در بورس</a>
@@ -28,7 +28,7 @@ export default function Footer() {
           </article>
 
           <article>
-            <h4>لینک های مفید</h4>
+            <h5>لینک های مفید</h5>
             <a href=''>سازمان بورس و اوراق بهادار</a>
             <a href=''>دنیای اقتصاد</a>
             <a href=''>شبکه کدال</a>
@@ -36,7 +36,7 @@ export default function Footer() {
           </article>
 
           <article>
-            <h4>نماس با ما</h4>
+            <h5>نماس با ما</h5>
             <Row>
               <Location />
               تهران، خیابان استاد مطهری خیابان میرزای شیرازی، کوچه هفدهم، پلاک
@@ -64,7 +64,9 @@ export default function Footer() {
               </div>
             </div>
             <div className='e_namad'>
-              <p>دقیق و امن، با مهر همراه شما هستیم</p>
+              <p style={{ color: 'var(--primary-500)' }}>
+                دقیق و امن، با مهر همراه شما هستیم
+              </p>
               <img src={e_namad} alt='' />
             </div>
           </article>
@@ -86,6 +88,12 @@ const Wrapper = styled.header`
       filter: grayscale(1);
       opacity: 0.8;
     }
+    h5 {
+      color: var(--gray-700);
+    }
+    a {
+      color: var(--gray-900);
+    }
     .content {
       margin-top: 2rem;
       display: flex;
@@ -103,6 +111,10 @@ const Wrapper = styled.header`
         flex-direction: row;
         justify-content: space-around;
         text-align: center;
+        gap: 1rem;
+        p {
+          margin-bottom: 1rem;
+        }
         .links {
           display: grid;
           grid-template-columns: 1fr 1fr;
@@ -118,7 +130,6 @@ const Wrapper = styled.header`
           }
         }
       }
-      /* here */
       @media (width>=800px) {
         flex-direction: row;
         .group {

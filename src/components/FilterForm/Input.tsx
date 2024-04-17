@@ -12,9 +12,8 @@ export default function Input({ placeholder }: Props) {
 }
 
 const Wrapper = styled.div`
-  font-family: 'Segoe UI', sans-serif;
-  margin: 1em 0 1em 0;
-  width: 400px;
+  font-family: inherit;
+  width: 300px;
   position: relative;
   direction: rtl;
   input {

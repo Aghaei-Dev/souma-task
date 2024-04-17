@@ -19,10 +19,12 @@ export default function FilterForm() {
 }
 
 const Wrapper = styled.aside`
+  position: sticky;
+  top: 105px;
   display: flex;
   flex-direction: column;
   border-radius: var(--radius);
-
+  align-self: self-start;
   border: 1px solid #e5e5e5;
   padding: 1rem;
   gap: 1rem;
