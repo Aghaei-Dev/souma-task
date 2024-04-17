@@ -2,11 +2,13 @@ import styled from 'styled-components'
 import { logo } from '../../assets/images'
 import { Button } from '../'
 import { links } from '../../assets/constants'
+import { Bars } from '../../assets/icons'
 export default function Header() {
   return (
     <Wrapper>
       <div className='fixed-width'>
-        <Button>ورود</Button>
+        <Button variant='contained'>ورود</Button>
+        <Bars />
         <nav>
           <ul>
             {links.map((item) => {
@@ -26,6 +28,8 @@ export default function Header() {
 }
 
 const Wrapper = styled.header`
+  opacity: 0.5;
+  z-index: 100;
   border-bottom: 1px solid #f4f4f4;
   background: var(--white);
   position: sticky;
@@ -37,18 +41,27 @@ const Wrapper = styled.header`
     align-items: center;
 
     ul {
-      background-color: red;
-
       display: flex;
       flex-direction: row-reverse;
       justify-content: space-between;
       align-items: center;
-      gap: 10px;
+      gap: 1rem;
       li {
         a {
           color: var(--gray-900);
           cursor: pointer;
         }
+      }
+    }
+    @media (width <= 700px) {
+      nav,
+      button {
+        display: none;
+      }
+    }
+    @media (width> 700px) {
+      svg {
+        display: none;
       }
     }
   }

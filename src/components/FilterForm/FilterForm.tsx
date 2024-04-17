@@ -13,7 +13,7 @@ export default function FilterForm() {
       </div>
       <Input placeholder='مرجع' />
 
-      <Button variant='contained'>اعمال فیلتر</Button>
+      <Button variant='outlined'>اعمال فیلتر</Button>
     </Wrapper>
   )
 }
