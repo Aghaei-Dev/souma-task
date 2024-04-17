@@ -5,7 +5,7 @@ export default function PostsList({ array }) {
   return (
     <Wrapper>
       {array.map((item) => {
-        return <SinglePost {...item} />
+        return <SinglePost {...item} key={item.id} />
       })}
     </Wrapper>
   )

@@ -1,13 +1,13 @@
 import AtSign from './AtSign'
 import Bale from './Bale'
 import Bars from './Bars'
+import Cross from './Cross'
 import Eye from './Eye'
 import Instagram from './Instagram'
 import Location from './Location'
 import Phone from './Phone'
 import Telegram from './Telegram'
 import Twitter from './Twitter'
-
 export {
   Eye,
   Bars,
@@ -18,4 +18,5 @@ export {
   Telegram,
   Bale,
   Twitter,
+  Cross,
 }

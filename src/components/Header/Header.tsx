@@ -9,7 +9,7 @@ export default function Header() {
     <Wrapper>
       <div className='fixed-width'>
         <Button variant='contained'>ورود</Button>
-        <SubMenu />
+        {/* <SubMenu /> */}
         <Bars />
         <nav>
           <ul>

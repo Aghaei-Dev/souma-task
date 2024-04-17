@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { Eye } from '../../assets/icons'
+import { lengthChecker } from '../../utils'
 
 type Props = {
   title: string
@@ -14,7 +15,7 @@ export default function SinglePost({ title, text, date, view, img }: Props) {
       <img src={img} alt={title} />
       <div>
         <h5>{title}</h5>
-        <p>{text}</p>
+        <p>{window.innerWidth <= 425 ? lengthChecker(text, 65) : text}</p>
       </div>
       <div className='group'>
         <time>{date}</time>
@@ -38,13 +39,11 @@ const Wrapper = styled.article`
 
   img {
     border-radius: var(--half-radius);
-    /* max-width: 284px; */
     object-fit: cover;
   }
   div {
     transition: var(--transition);
     font-size: 12px;
-
     h5 {
       color: var(--gray-800);
     }
@@ -61,25 +60,21 @@ const Wrapper = styled.article`
       justify-content: space-between;
       align-items: center;
       gap: 5px;
-      svg {
-        background: red;
-      }
     }
   }
   &:hover {
     border-color: var(--primary-500);
-    div {
-      padding-top: 0.5rem;
-    }
   }
   @media (width<=500px) {
     display: grid;
     grid-template-columns: auto auto;
     grid-template-rows: auto auto;
     padding: 0;
+    column-gap: 0.75rem;
+    row-gap: 0;
     img {
-      max-width: 130px;
-      max-height: 130px;
+      width: 100%;
+      border-radius: 0;
     }
     div {
       padding: 5px;

@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import { Footer, Header, PostsList, DatePicker, FilterForm } from './components'
 import { useEffect, useState } from 'react'
+import FilterModal from './components/FilterForm/FilterModal'
 
 export default function App() {
   const array = [
@@ -65,7 +66,8 @@ export default function App() {
     <main>
       <Header />
       <Wrapper className='fixed-width'>
-        <FilterForm />
+        {/* <FilterForm /> */}
+        {/* <FilterModal /> */}
         <div>
           <h2>خبرنامه</h2>
           <DatePicker />
@@ -79,7 +81,6 @@ export default function App() {
 
 const Wrapper = styled.section`
   direction: rtl;
-  /* background: #dcdcff; */
   display: flex;
   padding: 2rem 0;
   gap: 3rem;
@@ -91,5 +92,15 @@ const Wrapper = styled.section`
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
+  }
+  @media (width <= 700px) {
+    h2 {
+      font-size: 20px;
+      text-align: center;
+    }
+
+    /* aside {
+      display: none;
+    } */
   }
 `

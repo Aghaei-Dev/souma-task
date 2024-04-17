@@ -1,44 +1,109 @@
+const mobileLinks = [
+  { id: 0, text: '۱۱ فروردین' },
+  { id: 1, text: '۱۲ فروردین' },
+  { id: 2, text: '۱۳ فروردین' },
+  { id: 3, text: '۱۴ فروردین' },
+  { id: 4, text: '۱۵ فروردین' },
+  { id: 5, text: '۱۶فروردین' },
+  { id: 6, text: 'امروز' },
+]
+import { useEffect, useRef, useState } from 'react'
 import styled from 'styled-components'
-import { Button } from '../Assistance'
+
 export default function DatePicker() {
+  const wrapperRef = useRef(null)
+
+  const [page, setPage] = useState(mobileLinks.length - 1)
+  const [width, setWidth] = useState(0)
+
+  useEffect(() => {
+    if (wrapperRef) {
+      setWidth(wrapperRef.current.firstChild.getBoundingClientRect().width)
+    }
+  }, [])
+
+  const styles = {
+    page,
+    width,
+    length: mobileLinks.length,
+  }
+
+  console.log(mobileLinks.reverse())
+  console.log(mobileLinks)
+
   return (
-    <Wrapper>
-      <Button radius='var(--half-radius)' variant='contained'>
-        امروز
-      </Button>
-      <Button disable radius='var(--half-radius)' variant='contained'>
-        ۱۹فروردین
-      </Button>
-      <Button disable radius='var(--half-radius)' variant='contained'>
-        ۱۸فروردین
-      </Button>
-      <Button disable radius='var(--half-radius)' variant='contained'>
-        ۱۷فروردین
-      </Button>
-      <Button disable radius='var(--half-radius)' variant='contained'>
-        ۱۶فروردین
-      </Button>
-      <Button disable radius='var(--half-radius)' variant='contained'>
-        ۱۵فروردین
-      </Button>
-      <Button disable radius='var(--half-radius)' variant='contained'>
-        ۱۴فروردین
-      </Button>
+    <Wrapper styles={styles}>
+      <ul ref={wrapperRef}>
+        {mobileLinks.reverse().map((item) => {
+          const { id, text } = item
+          return (
+            <div
+              className={`${page === id ? 'active' : ''}`}
+              key={id}
+              onClick={() => {
+                setPage(id)
+              }}
+            >
+              {text}
+            </div>
+          )
+        })}
+      </ul>
     </Wrapper>
   )
 }
-const Wrapper = styled.section`
-  background: #f4f4f4;
-  padding: 0.5rem;
-  border-radius: var(--half-radius);
-  width: 100%;
-  display: block;
-  align-self: stretch;
-  justify-self: stretch;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  @media (width<=850px) {
-    display: none;
-  }
-`
+const Wrapper = styled('nav')(({ styles: { width, page } }) => ({
+  ul: {
+    position: 'relative',
+    padding: '0.75rem',
+    borderRadius: 'var(--half-radius)',
+    listStyleType: 'none',
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    background: 'var(--gray-50)',
+    transition: '.4s left',
+    overflow: 'hidden',
+    zIndex: 0,
+
+    '::before': {
+      content: "''",
+      position: 'absolute',
+      width: width,
+      height: '75%',
+      background: 'var(--primary-500)',
+      top: '0',
+      left: `${width * page + 9}px`,
+      transition: '.4s left',
+      zIndex: -1,
+      borderRadius: 'var(--half-radius)',
+      transform: 'translate(0%,18%)',
+    },
+  },
+  div: {
+    color: 'var(--gray-500)',
+    textAlign: 'center',
+    width: '100%',
+    height: '100%',
+    transition: '.3s all',
+    display: 'flex',
+    alignItems: 'center',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    gap: '.5rem',
+    cursor: 'pointer',
+    '* , >*': {
+      cursor: 'pointer',
+    },
+  },
+  '.active': {
+    color: 'var(--white)',
+  },
+  '*, >*': {
+    direction: 'ltr',
+  },
+
+  ' @media (width<=850px)': {
+    display: 'none',
+  },
+}))
