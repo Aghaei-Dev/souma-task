@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit'
-import { generalSlice } from './features'
+import { globalReducer,postReducer } from './features'
+import { setupListeners } from '@reduxjs/toolkit/query'
 
 export const store = configureStore({
   reducer: {
-    general: generalSlice,
+    global: globalReducer,
+    post: postReducer,
   },
 })
 
@@ -11,3 +13,4 @@ export const store = configureStore({
 export type RootState = ReturnType<typeof store.getState>
 // Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}
 export type AppDispatch = typeof store.dispatch
+setupListeners(store.dispatch)

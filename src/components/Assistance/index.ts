@@ -1,3 +1,5 @@
 import Button from './Button'
 import Chip from './Chip'
-export { Button, Chip }
+import Divider from './Divider'
+import Spinner from './Spinner'
+export { Button, Chip, Divider, Spinner }

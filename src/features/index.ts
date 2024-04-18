@@ -1,4 +1,4 @@
-import postSlice from './Posts/PostSlice'
-import { generalSlice } from './general/generalSlice.ts'
+import globalReducer from './global/globalSlice'
+import postReducer from './post/postSlice'
 
-export { postSlice, generalSlice }
+export { globalReducer, postReducer }

@@ -26,6 +26,7 @@ const Wrapper = styled.button<Props>`
   min-width: 100px;
   justify-content: center;
   align-items: center;
+  transition: var(--transition);
   background: ${(props) =>
     props.disable
       ? 'transparent'
@@ -45,4 +46,13 @@ const Wrapper = styled.button<Props>`
       : props.variant === 'contained'
       ? 'var(--white)'
       : 'var(--primary-500)'};
+  &:focus {
+    background: ${(props) =>
+      props.variant === 'contained'
+        ? 'var(--primary-600)'
+        : 'var(--primary-100)'};
+  }
+  &:hover {
+    box-shadow: 0px 0px 10px var(--primary-50);
+  }
 `

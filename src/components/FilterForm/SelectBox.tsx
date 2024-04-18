@@ -2,10 +2,14 @@ import styled from 'styled-components'
 type Props = {
   placeholder: string
 }
-export default function Input({ placeholder }: Props) {
+export default function SelectBox({ placeholder }: Props) {
   return (
     <Wrapper>
-      <input type='text' autoComplete='off' required={true} />
+      <select name='' id='' autoComplete='off' required={true}>
+        <option value=''></option>
+        <option value='1'>داخلی</option>
+        <option value='2'>مهرنیوز</option>
+      </select>
       <label htmlFor='name'>{placeholder}</label>
     </Wrapper>
   )
@@ -17,9 +21,9 @@ const Wrapper = styled.div`
   position: relative;
   direction: rtl;
   min-width: 220px;
-  input {
+  select {
     font-size: 100%;
-    padding: 0.8em;
+    padding: 0.3rem 0.8rem;
     outline: none;
     border: 1px solid var(--gray-100);
     background-color: transparent;
@@ -38,6 +42,7 @@ const Wrapper = styled.div`
     &:focus {
       border-color: var(--primary-500);
     }
+    font-family: inherit;
   }
 
   label {

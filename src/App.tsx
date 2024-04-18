@@ -1,77 +1,51 @@
 import styled from 'styled-components'
-import { Footer, Header, PostsList, DatePicker, FilterForm } from './components'
-import { useEffect, useState } from 'react'
-import FilterModal from './components/FilterForm/FilterModal'
+import {
+  Footer,
+  Header,
+  PostsList,
+  DatePicker,
+  FilterModal,
+  FilterForm,
+  Divider,
+  Spinner,
+} from './components'
+
+import { toggleModal } from './features/global/globalSlice'
+import { useAppDispatch, useAppSelector } from './hooks'
+import { getAllPosts } from './features/post/postSlice'
+import { useEffect } from 'react'
+import { Filters } from './assets/icons'
 
 export default function App() {
-  const array = [
-    {
-      id: 1,
-      title: 'پیش بینی معاملات بورس ۳۱ تیر ۱۴۰۲/ احتمال عرضه سنگین در شنبه',
-      text: 'انتظار می رود در ابتدای معاملات روز شنبه بازار سرمایه با یک عرضه سنگین مواجه شود.انتظار می رود در ابتدای معاملات روز شنبه بازار سرمایه با یک عرضه سنگین مواجه شود.',
-      img: '/image.png',
-      date: '1402/05/01 - 10:36:09',
-      view: '326',
-    },
-    {
-      id: 2,
-      title: 'پیش بینی معاملات بورس ۳۱ تیر ۱۴۰۲/ احتمال عرضه سنگین در شنبه',
-      text: 'انتظار می رود در ابتدای معاملات روز شنبه بازار سرمایه با یک عرضه سنگین مواجه شود.انتظار می رود در ابتدای معاملات روز شنبه بازار سرمایه با یک عرضه سنگین مواجه شود.',
-      img: '/image.png',
-      date: '1402/05/01 - 10:36:09',
-      view: '326',
-    },
-    {
-      id: 3,
-      title: 'پیش بینی معاملات بورس ۳۱ تیر ۱۴۰۲/ احتمال عرضه سنگین در شنبه',
-      text: 'انتظار می رود در ابتدای معاملات روز شنبه بازار سرمایه با یک عرضه سنگین مواجه شود.انتظار می رود در ابتدای معاملات روز شنبه بازار سرمایه با یک عرضه سنگین مواجه شود.',
-      img: '/image.png',
-      date: '1402/05/01 - 10:36:09',
-      view: '326',
-    },
-    {
-      id: 4,
-      title: 'پیش بینی معاملات بورس ۳۱ تیر ۱۴۰۲/ احتمال عرضه سنگین در شنبه',
-      text: 'انتظار می رود در ابتدای معاملات روز شنبه بازار سرمایه با یک عرضه سنگین مواجه شود.انتظار می رود در ابتدای معاملات روز شنبه بازار سرمایه با یک عرضه سنگین مواجه شود.',
-      img: '/image.png',
-      date: '1402/05/01 - 10:36:09',
-      view: '326',
-    },
-    {
-      id: 5,
-      title: 'پیش بینی معاملات بورس ۳۱ تیر ۱۴۰۲/ احتمال عرضه سنگین در شنبه',
-      text: 'انتظار می رود در ابتدای معاملات روز شنبه بازار سرمایه با یک عرضه سنگین مواجه شود.انتظار می رود در ابتدای معاملات روز شنبه بازار سرمایه با یک عرضه سنگین مواجه شود.',
-      img: '/image.png',
-      date: '1402/05/01 - 10:36:09',
-      view: '326',
-    },
-    {
-      id: 6,
-      title: 'پیش بینی معاملات بورس ۳۱ تیر ۱۴۰۲/ احتمال عرضه سنگین در شنبه',
-      text: 'انتظار می رود در ابتدای معاملات روز شنبه بازار سرمایه با یک عرضه سنگین مواجه شود.انتظار می رود در ابتدای معاملات روز شنبه بازار سرمایه با یک عرضه سنگین مواجه شود.',
-      img: '/image.png',
-      date: '1402/05/01 - 10:36:09',
-      view: '326',
-    },
-    {
-      id: 7,
-      title: 'پیش بینی معاملات بورس ۳۱ تیر ۱۴۰۲/ احتمال عرضه سنگین در شنبه',
-      text: 'انتظار می رود در ابتدای معاملات روز شنبه بازار سرمایه با یک عرضه سنگین مواجه شود.انتظار می رود در ابتدای معاملات روز شنبه بازار سرمایه با یک عرضه سنگین مواجه شود.',
-      img: '/image.png',
-      date: '1402/05/01 - 10:36:09',
-      view: '326',
-    },
-  ]
+  const { isModalOpen } = useAppSelector((state) => state.global)
+  const { data } = useAppSelector((state) => state.post.post)
+  const isLoading = useAppSelector((state) => state.post.loading)
+
+  const dispatch = useAppDispatch()
+
+  useEffect(() => {
+    dispatch(getAllPosts())
+    console.log(data)
+    console.log(isLoading)
+  }, [])
+
   return (
     <main>
       <Header />
       <Wrapper className='fixed-width'>
-        {/* <FilterForm /> */}
-        {/* <FilterModal /> */}
+        <FilterForm />
+        {isModalOpen && <FilterModal />}
         <div>
           <h2>خبرنامه</h2>
+          <section className='filter'>
+            <button onClick={() => dispatch(toggleModal())}>
+              <Filters />
+              فیلتر (2)
+            </button>
+            <Divider />
+          </section>
           <DatePicker />
-          <PostsList array={array} />
+          {isLoading ? <Spinner /> : data && <PostsList array={data} />}
         </div>
       </Wrapper>
       <Footer />
@@ -92,15 +66,26 @@ const Wrapper = styled.section`
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
+    section {
+      button {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: none;
+        border: none;
+        font-family: inherit;
+      }
+    }
   }
   @media (width <= 700px) {
     h2 {
       font-size: 20px;
       text-align: center;
     }
-
-    /* aside {
+  }
+  @media (width > 700px) {
+    .filter {
       display: none;
-    } */
+    }
   }
 `

@@ -1,26 +1,32 @@
 import styled from 'styled-components'
 import { Eye } from '../../assets/icons'
-import { lengthChecker } from '../../utils'
+import { lengthChecker } from '../../functions'
 
 type Props = {
   title: string
-  text: string
+  brief: string
   date: string
-  view: string
-  img: string
+  visitCount: string
+  fileContent: string
 }
-export default function SinglePost({ title, text, date, view, img }: Props) {
+export default function SinglePost({
+  title,
+  brief,
+  date,
+  visitCount,
+  fileContent,
+}: Props) {
   return (
     <Wrapper>
-      <img src={img} alt={title} />
+      <img src={fileContent} alt={title} />
       <div>
         <h5>{title}</h5>
-        <p>{window.innerWidth <= 425 ? lengthChecker(text, 65) : text}</p>
+        <p>{window.innerWidth <= 425 ? lengthChecker(brief, 65) : brief}</p>
       </div>
       <div className='group'>
         <time>{date}</time>
         <span>
-          {view}
+          {visitCount}
           <Eye />
         </span>
       </div>
@@ -33,13 +39,15 @@ const Wrapper = styled.article`
   padding: 0.5rem;
   gap: 1rem;
   border: 1px solid #e5e5e5;
-  /* height: 340px; */
+  min-height: 340px;
   border-radius: var(--half-radius);
   transition: var(--transition);
 
   img {
     border-radius: var(--half-radius);
     object-fit: cover;
+    width: 100%;
+    height: 200px;
   }
   div {
     transition: var(--transition);
@@ -55,6 +63,8 @@ const Wrapper = styled.article`
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-top: auto;
+
     span {
       display: flex;
       justify-content: space-between;
@@ -72,12 +82,16 @@ const Wrapper = styled.article`
     padding: 0;
     column-gap: 0.75rem;
     row-gap: 0;
+    height: 147px;
+    min-height: unset;
     img {
-      width: 100%;
       border-radius: 0;
+      width: 129px;
+      height: 119px;
     }
     div {
       padding: 5px;
+      background: red;
     }
     .group {
       padding: 5px;

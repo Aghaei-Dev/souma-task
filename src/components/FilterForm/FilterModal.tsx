@@ -1,17 +1,22 @@
 import styled from 'styled-components'
 import { Cross } from '../../assets/icons'
-import Divider from '../Assistance/Divider'
-import FilterForm from './FilterForm'
+import { FilterForm, Divider } from '../'
+import { useDispatch } from 'react-redux'
+
+import { toggleModal } from '../../features/global/globalSlice'
 
 export default function FilterModal() {
+  const dispatch = useDispatch()
   return (
     <Wrapper>
       <div className='row'>
         <h2>فیلتر ها</h2>
-        <Cross />
+        <button onClick={() => dispatch(toggleModal())}>
+          <Cross />
+        </button>
       </div>
       <Divider />
-      <FilterForm isModal />
+      <FilterForm />
     </Wrapper>
   )
 }
@@ -31,6 +36,15 @@ const Wrapper = styled.main`
     align-items: center;
     h2 {
       font-size: 14px;
+    }
+    > button {
+      border: none;
+      padding: 0.5rem;
+      background: none;
+      cursor: pointer;
+      * {
+        cursor: pointer;
+      }
     }
   }
   aside {

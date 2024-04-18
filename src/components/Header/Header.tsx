@@ -1,15 +1,13 @@
 import styled from 'styled-components'
 import { logo } from '../../assets/images'
-import { Button } from '../'
 import { links } from '../../assets/constants'
 import { Bars } from '../../assets/icons'
-import SubMenu from './SubMenu'
+import { Button } from '../'
 export default function Header() {
   return (
     <Wrapper>
       <div className='fixed-width'>
         <Button variant='contained'>ورود</Button>
-        {/* <SubMenu /> */}
         <Bars />
         <nav>
           <ul>

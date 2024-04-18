@@ -1,4 +1,4 @@
-const mobileLinks = [
+const dates = [
   { id: 0, text: '۱۱ فروردین' },
   { id: 1, text: '۱۲ فروردین' },
   { id: 2, text: '۱۳ فروردین' },
@@ -13,11 +13,11 @@ import styled from 'styled-components'
 export default function DatePicker() {
   const wrapperRef = useRef(null)
 
-  const [page, setPage] = useState(mobileLinks.length - 1)
+  const [page, setPage] = useState(dates.length - 1)
   const [width, setWidth] = useState(0)
 
   useEffect(() => {
-    if (wrapperRef) {
+    if (wrapperRef.current) {
       setWidth(wrapperRef.current.firstChild.getBoundingClientRect().width)
     }
   }, [])
@@ -25,16 +25,13 @@ export default function DatePicker() {
   const styles = {
     page,
     width,
-    length: mobileLinks.length,
+    length: dates.length,
   }
-
-  console.log(mobileLinks.reverse())
-  console.log(mobileLinks)
 
   return (
     <Wrapper styles={styles}>
       <ul ref={wrapperRef}>
-        {mobileLinks.reverse().map((item) => {
+        {dates.reverse().map((item) => {
           const { id, text } = item
           return (
             <div

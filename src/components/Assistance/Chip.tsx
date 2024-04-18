@@ -1,7 +1,10 @@
 import styled from 'styled-components'
 
-export default function Chip() {
-  return <Wrapper>#یسی</Wrapper>
+type Props = {
+  text: string
+}
+export default function Chip({ text }: Props) {
+  return <Wrapper># {text} </Wrapper>
 }
 
 const Wrapper = styled.span`
