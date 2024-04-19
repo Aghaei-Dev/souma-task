@@ -1,4 +1,6 @@
 import styled from 'styled-components'
+import { useEffect } from 'react'
+
 import {
   Footer,
   Header,
@@ -9,19 +11,18 @@ import {
   Divider,
   Spinner,
 } from './components'
-
-import { toggleModal } from './features/global/globalSlice'
 import { useAppDispatch, useAppSelector } from './hooks'
+
+import { openModal } from './features/global/globalSlice'
 import { getAllPosts } from './features/post/postSlice'
-import { useEffect } from 'react'
-import { Filters } from './assets/icons'
+
 import { defaultPayload } from './assets/constants'
+import { Filters } from './assets/icons'
 
 export default function App() {
   const { isModalOpen } = useAppSelector((state) => state.global)
   const { data } = useAppSelector((state) => state.post.post)
-  const { isLoading, filterNumber, tagList, contentSearch, sourceType } =
-    useAppSelector((state) => state.post)
+  const { isLoading, filterNumber } = useAppSelector((state) => state.post)
   const dispatch = useAppDispatch()
 
   useEffect(() => {
@@ -37,14 +38,20 @@ export default function App() {
         <div>
           <h2>خبرنامه</h2>
           <section className='filter'>
-            <button onClick={() => dispatch(toggleModal())}>
+            <button onClick={() => dispatch(openModal())}>
               <Filters />
               فیلتر ({filterNumber})
             </button>
             <Divider />
           </section>
           <DatePicker />
-          {isLoading ? <Spinner /> : data && <PostsList array={data} />}
+          {isLoading ? (
+            <Spinner />
+          ) : data.length > 0 ? (
+            <PostsList array={data} />
+          ) : (
+            <h1>نداریم !!!</h1>
+          )}
         </div>
       </Wrapper>
       <Footer />

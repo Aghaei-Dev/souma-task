@@ -1,12 +1,13 @@
 import styled from 'styled-components'
 import { Button, Chip, Input, SelectBox } from '../'
-import { useEffect } from 'react'
+import { ChangeEvent, useEffect } from 'react'
 import { useAppSelector, useAppDispatch } from '../../hooks'
 import {
   clearFilters,
   getAllPosts,
   handleChange,
 } from '../../features/post/postSlice'
+import { closeModal } from '../../features/global/globalSlice'
 
 export default function FilterForm() {
   const { isModalOpen } = useAppSelector((state) => state.global)
@@ -24,19 +25,37 @@ export default function FilterForm() {
     }
   }, [isModalOpen])
 
-  const handleSearch = (e) => {
+  const handleFilter = (e: ChangeEvent) => {
     dispatch(handleChange({ name: e.target.name, value: e.target.value }))
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: ChangeEvent) => {
     e.preventDefault()
-    dispatch(getAllPosts())
+    dispatch(
+      getAllPosts({
+        excelProperties: [],
+        skip: 0,
+        take: 0,
+        // fromDate: '',
+        // toDate: '',
+        exportType: 0,
+        contentSearch,
+        // visitCountMax: 0,
+        // visitCountMin: 0,
+        sourceTypes: Number(sourceType),
+        tagList: [],
+        contentType: 0,
+        isActive: true,
+        includeFile: true,
+      })
+    )
     dispatch(clearFilters())
+    dispatch(closeModal())
   }
   return (
     <Wrapper isModalOpen={isModalOpen}>
       {!isModalOpen && <h3>فیلتر</h3>}
-      {isModalOpen && filterNumber === 0 && (
+      {isModalOpen && filterNumber > 0 && (
         <span
           onClick={() => {
             dispatch(clearFilters())
@@ -52,16 +71,15 @@ export default function FilterForm() {
           type='text'
           name='contentSearch'
           value={contentSearch}
-          handleChange={handleSearch}
+          handleChange={handleFilter}
         />
         <div className='col'>
           <Input
             labelText='جستجوی هشتگ'
             type='text'
-            ظ
             name='tagList'
             value={tagList}
-            handleChange={handleSearch}
+            handleChange={handleFilter}
           />
           <div className='flex'>
             <Chip text='بورس' />
@@ -72,8 +90,12 @@ export default function FilterForm() {
           labelText='مرجع'
           name='sourceType'
           value={sourceType}
-          handleChange={handleSearch}
-          list={['', 'sd', 'sd']}
+          handleChange={handleFilter}
+          list={[
+            { text: '', value: 0 },
+            { text: 'داخلی', value: 1 },
+            { text: 'مهرنیوز', value: 2 },
+          ]}
         />
         <Button variant='outlined' type='submit'>
           اعمال فیلتر
@@ -83,7 +105,7 @@ export default function FilterForm() {
   )
 }
 
-const Wrapper = styled.aside`
+const Wrapper = styled('aside')<{ isModalOpen: boolean }>`
   position: ${(props) => !props.isModalOpen && 'sticky'};
   top: 125px;
 

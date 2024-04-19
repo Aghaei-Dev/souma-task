@@ -1,11 +1,10 @@
 const dates = [
-  { id: 0, text: '۱۱ فروردین' },
-  { id: 1, text: '۱۲ فروردین' },
-  { id: 2, text: '۱۳ فروردین' },
-  { id: 3, text: '۱۴ فروردین' },
-  { id: 4, text: '۱۵ فروردین' },
-  { id: 5, text: '۱۶فروردین' },
-  { id: 6, text: 'امروز' },
+  { id: 0, text: '۱۲ فروردین' },
+  { id: 1, text: '۱۳ فروردین' },
+  { id: 2, text: '۱۴ فروردین' },
+  { id: 3, text: '۱۵ فروردین' },
+  { id: 4, text: '۱۶فروردین' },
+  { id: 5, text: 'امروز' },
 ]
 import { useEffect, useRef, useState } from 'react'
 import styled from 'styled-components'

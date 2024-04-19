@@ -5,26 +5,30 @@ import { lengthChecker } from '../../functions'
 type Props = {
   title: string
   brief: string
-  date: string
+
   visitCount: string
   fileContent: string
+  publishDate: string
 }
 export default function SinglePost({
   title,
   brief,
-  date,
   visitCount,
   fileContent,
+  publishDate,
 }: Props) {
+  const humanReadable = publishDate.split('T')
   return (
     <Wrapper>
       <img src={fileContent} alt={title} />
       <div>
         <h5>{title}</h5>
-        <p>{window.innerWidth <= 425 ? lengthChecker(brief, 65) : brief}</p>
+        <p>{window.innerWidth <= 500 ? lengthChecker(brief, 200) : brief}</p>
       </div>
       <div className='group'>
-        <time>{date}</time>
+        <time>
+          {humanReadable[1].slice(0, 8)} - {humanReadable[0]}
+        </time>
         <span>
           {visitCount}
           <Eye />
@@ -42,6 +46,7 @@ const Wrapper = styled.article`
   min-height: 340px;
   border-radius: var(--half-radius);
   transition: var(--transition);
+  overflow: hidden;
 
   img {
     border-radius: var(--half-radius);
@@ -52,10 +57,15 @@ const Wrapper = styled.article`
   div {
     transition: var(--transition);
     font-size: 12px;
+
     h5 {
+      transition: var(--transition);
+
       color: var(--gray-800);
     }
     p {
+      transition: var(--transition);
+
       color: var(--gray-700);
     }
   }
@@ -64,7 +74,9 @@ const Wrapper = styled.article`
     justify-content: space-between;
     align-items: center;
     margin-top: auto;
-
+    time {
+      direction: rtl;
+    }
     span {
       display: flex;
       justify-content: space-between;
@@ -74,6 +86,10 @@ const Wrapper = styled.article`
   }
   &:hover {
     border-color: var(--primary-500);
+    h5,
+    p {
+      padding-top: 0.2rem;
+    }
   }
   @media (width<=500px) {
     display: grid;
@@ -91,7 +107,7 @@ const Wrapper = styled.article`
     }
     div {
       padding: 5px;
-      background: red;
+      /* background: red; */
     }
     .group {
       padding: 5px;

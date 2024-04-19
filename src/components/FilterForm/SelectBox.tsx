@@ -1,11 +1,11 @@
+import { ChangeEvent } from 'react'
 import styled from 'styled-components'
 type Props = {
   labelText: string
-  type: string
   name: string
   value: string
-  handleChange: () => {}
-  list: []
+  handleChange: (e: ChangeEvent) => void
+  list: { text: string; value: number }[]
 }
 export default function SelectBox({
   labelText,
@@ -25,10 +25,11 @@ export default function SelectBox({
         autoComplete='off'
         required={true}
       >
-        {list.map((itemValue, index) => {
+        {list.map((item, index) => {
+          const { text, value } = item
           return (
-            <option key={index} value={itemValue}>
-              {itemValue}
+            <option key={index} value={value}>
+              {text}
             </option>
           )
         })}

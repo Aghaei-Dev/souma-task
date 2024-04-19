@@ -3,7 +3,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 
 type State = {
   posts: []
-  error: 'string'
+  error: string
   loading: boolean
 }
 type Filter = {
@@ -25,15 +25,18 @@ const initialState = {
   ...initialFiltersState,
 }
 
-export const getAllPosts = createAsyncThunk('getAllPosts', async (payload) => {
-  const resp = await axios.post(
-    'https://mehrapi.souma-p.ir/api/v1/Content/get-contents',
-    payload
-  )
-  console.log(payload)
+export const getAllPosts = createAsyncThunk(
+  'getAllPosts',
+  async (payload: {}) => {
+    const resp = await axios.post(
+      'https://mehrapi.souma-p.ir/api/v1/Content/get-contents',
+      payload
+    )
+    console.log(payload)
 
-  return resp.data
-})
+    return resp.data
+  }
+)
 
 const postSlice = createSlice({
   name: 'posts',
@@ -57,7 +60,9 @@ const postSlice = createSlice({
       })
       .addCase(getAllPosts.rejected, (state, { error }) => {
         state.isLoading = false
-        state.error = error.message
+        if (error.message) {
+          state.error = error.message
+        }
       })
   },
 })

@@ -12,12 +12,15 @@ export const globalSlice = createSlice({
   name: 'global',
   initialState,
   reducers: {
-    toggleModal: (state) => {
-      state.isModalOpen = !state.isModalOpen
+    closeModal: (state) => {
+      state.isModalOpen = false
+    },
+    openModal: (state) => {
+      state.isModalOpen = true
     },
   },
 })
 
-export const { toggleModal } = globalSlice.actions
+export const { closeModal, openModal } = globalSlice.actions
 
 export default globalSlice.reducer

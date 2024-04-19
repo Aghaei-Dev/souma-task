@@ -3,7 +3,7 @@ import { Cross } from '../../assets/icons'
 import { FilterForm, Divider } from '../'
 import { useDispatch } from 'react-redux'
 
-import { toggleModal } from '../../features/global/globalSlice'
+import { closeModal } from '../../features/global/globalSlice'
 
 export default function FilterModal() {
   const dispatch = useDispatch()
@@ -11,7 +11,7 @@ export default function FilterModal() {
     <Wrapper>
       <div className='row'>
         <h2>فیلتر ها</h2>
-        <button onClick={() => dispatch(toggleModal())}>
+        <button onClick={() => dispatch(closeModal())}>
           <Cross />
         </button>
       </div>
