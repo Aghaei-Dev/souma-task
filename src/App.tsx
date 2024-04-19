@@ -15,18 +15,17 @@ import { useAppDispatch, useAppSelector } from './hooks'
 import { getAllPosts } from './features/post/postSlice'
 import { useEffect } from 'react'
 import { Filters } from './assets/icons'
+import { defaultPayload } from './assets/constants'
 
 export default function App() {
   const { isModalOpen } = useAppSelector((state) => state.global)
   const { data } = useAppSelector((state) => state.post.post)
-  const isLoading = useAppSelector((state) => state.post.loading)
-
+  const { isLoading, filterNumber, tagList, contentSearch, sourceType } =
+    useAppSelector((state) => state.post)
   const dispatch = useAppDispatch()
 
   useEffect(() => {
-    dispatch(getAllPosts())
-    console.log(data)
-    console.log(isLoading)
+    dispatch(getAllPosts(defaultPayload))
   }, [])
 
   return (
@@ -40,7 +39,7 @@ export default function App() {
           <section className='filter'>
             <button onClick={() => dispatch(toggleModal())}>
               <Filters />
-              فیلتر (2)
+              فیلتر ({filterNumber})
             </button>
             <Divider />
           </section>

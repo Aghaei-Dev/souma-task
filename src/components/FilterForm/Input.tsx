@@ -1,12 +1,30 @@
 import styled from 'styled-components'
 type Props = {
-  placeholder: string
+  labelText: string
+  type: string
+  name: string
+  value: string
+  handleChange: (any) => void
 }
-export default function Input({ placeholder }: Props) {
+export default function Input({
+  type,
+  name,
+  value,
+  handleChange,
+  labelText,
+}: Props) {
   return (
     <Wrapper>
-      <input type='text' autoComplete='off' required={true} />
-      <label htmlFor='name'>{placeholder}</label>
+      <input
+        type={type}
+        autoComplete='off'
+        required={true}
+        id={name}
+        name={name}
+        value={value}
+        onChange={handleChange}
+      />
+      <label htmlFor={name}>{labelText || name}</label>
     </Wrapper>
   )
 }

@@ -6,16 +6,18 @@ type Props = {
   radius?: string
   disable?: boolean
   icon?: ReactNode
+  type: string
   children: ReactNode
 }
 export default function Button({
   radius = 'var(--radius)',
   disable = false,
   variant,
+  type = 'button',
   children,
 }: Props) {
   return (
-    <Wrapper radius={radius} disable={disable} variant={variant}>
+    <Wrapper radius={radius} disable={disable} variant={variant} type={type}>
       {children}
     </Wrapper>
   )

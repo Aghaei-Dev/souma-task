@@ -1,16 +1,39 @@
 import styled from 'styled-components'
 type Props = {
-  placeholder: string
+  labelText: string
+  type: string
+  name: string
+  value: string
+  handleChange: () => {}
+  list: []
 }
-export default function SelectBox({ placeholder }: Props) {
+export default function SelectBox({
+  labelText,
+  name,
+  value,
+  handleChange,
+  list,
+}: Props) {
   return (
     <Wrapper>
-      <select name='' id='' autoComplete='off' required={true}>
-        <option value=''></option>
-        <option value='1'>داخلی</option>
-        <option value='2'>مهرنیوز</option>
+      <select
+        name={name}
+        id={name}
+        value={value}
+        onChange={handleChange}
+        className='form-select'
+        autoComplete='off'
+        required={true}
+      >
+        {list.map((itemValue, index) => {
+          return (
+            <option key={index} value={itemValue}>
+              {itemValue}
+            </option>
+          )
+        })}
       </select>
-      <label htmlFor='name'>{placeholder}</label>
+      <label htmlFor={name}> {labelText || name}</label>
     </Wrapper>
   )
 }

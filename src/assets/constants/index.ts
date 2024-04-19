@@ -5,3 +5,20 @@ export const links = [
   { id: 4, href: '/', text: 'درباره ما' },
   { id: 5, href: '/', text: 'ارتباط با ما' },
 ]
+
+export const defaultPayload = {
+  excelProperties: [],
+  skip: 0,
+  take: 0,
+  // fromDate: '',
+  // toDate: '',
+  exportType: 0,
+  contentSearch: '',
+  // visitCountMax: 0,
+  // visitCountMin: 0,
+  sourceTypes: 0,
+  tagList: [],
+  contentType: 0,
+  isActive: true,
+  includeFile: true,
+}
