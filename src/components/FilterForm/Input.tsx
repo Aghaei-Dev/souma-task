@@ -1,10 +1,11 @@
+import { ChangeEvent } from 'react'
 import styled from 'styled-components'
 type Props = {
   labelText: string
   type: string
   name: string
   value: string
-  handleChange: (any) => void
+  handleChange: (e: ChangeEvent) => void
 }
 export default function Input({
   type,

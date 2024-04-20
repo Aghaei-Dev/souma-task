@@ -2,7 +2,22 @@ import axios from 'axios'
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 
 type State = {
-  posts: []
+  posts: {
+    brief: string
+    contentAttachmentId: null | number
+    contentTypeId: number
+    contentTypeTitle: string
+    fileContent: string
+    id: number
+    isActive: boolean
+    publishDate: string
+    sourceTypeId: number
+    sourceTypeTitle: string
+    sourceUrl: null | string
+    tages: []
+    title: string
+    visitCount: number
+  }[]
   error: string
   loading: boolean
 }
@@ -32,9 +47,8 @@ export const getAllPosts = createAsyncThunk(
       'https://mehrapi.souma-p.ir/api/v1/Content/get-contents',
       payload
     )
-    console.log(payload)
 
-    return resp.data
+    return resp.data.data
   }
 )
 

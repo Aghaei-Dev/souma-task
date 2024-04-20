@@ -29,7 +29,7 @@ export default function FilterForm() {
     dispatch(handleChange({ name: e.target.name, value: e.target.value }))
   }
 
-  const handleSubmit = (e: ChangeEvent) => {
+  const handleSubmit = (e: ChangeEvent): void => {
     e.preventDefault()
     dispatch(
       getAllPosts({

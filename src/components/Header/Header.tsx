@@ -7,7 +7,9 @@ export default function Header() {
   return (
     <Wrapper>
       <div className='fixed-width'>
-        <Button variant='contained'>ورود</Button>
+        <Button variant='contained' type='button'>
+          ورود
+        </Button>
         <Bars />
         <nav>
           <ul>
@@ -41,11 +43,6 @@ const Wrapper = styled.header`
     align-items: center;
     button {
       position: relative;
-      &:hover {
-        .sub-menu {
-          background: red;
-        }
-      }
     }
     ul {
       display: flex;

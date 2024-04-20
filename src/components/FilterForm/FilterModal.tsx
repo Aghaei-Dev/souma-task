@@ -1,7 +1,8 @@
 import styled from 'styled-components'
+import { useDispatch } from 'react-redux'
+
 import { Cross } from '../../assets/icons'
 import { FilterForm, Divider } from '../'
-import { useDispatch } from 'react-redux'
 
 import { closeModal } from '../../features/global/globalSlice'
 

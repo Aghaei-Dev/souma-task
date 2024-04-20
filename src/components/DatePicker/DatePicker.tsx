@@ -1,14 +1,12 @@
-const dates = [
-  { id: 0, text: '۱۲ فروردین' },
-  { id: 1, text: '۱۳ فروردین' },
-  { id: 2, text: '۱۴ فروردین' },
-  { id: 3, text: '۱۵ فروردین' },
-  { id: 4, text: '۱۶فروردین' },
-  { id: 5, text: 'امروز' },
-]
 import { useEffect, useRef, useState } from 'react'
 import styled from 'styled-components'
+import { dates } from '../../assets/constants'
 
+// type Props = {
+//   page: number
+//   width: string
+//   length: number
+// }
 export default function DatePicker() {
   const wrapperRef = useRef(null)
 

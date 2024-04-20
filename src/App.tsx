@@ -21,8 +21,9 @@ import { Filters } from './assets/icons'
 
 export default function App() {
   const { isModalOpen } = useAppSelector((state) => state.global)
-  const { data } = useAppSelector((state) => state.post.post)
-  const { isLoading, filterNumber } = useAppSelector((state) => state.post)
+  const { isLoading, filterNumber, post } = useAppSelector(
+    (state) => state.post
+  )
   const dispatch = useAppDispatch()
 
   useEffect(() => {
@@ -47,8 +48,8 @@ export default function App() {
           <DatePicker />
           {isLoading ? (
             <Spinner />
-          ) : data.length > 0 ? (
-            <PostsList array={data} />
+          ) : post?.length > 0 ? (
+            <PostsList array={post} />
           ) : (
             <h1>نداریم !!!</h1>
           )}
